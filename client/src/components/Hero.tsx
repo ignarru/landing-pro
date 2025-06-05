@@ -54,7 +54,7 @@ export default function Hero() {
               
               {/* Main brain container */}
               <div className="absolute inset-4 glass-effect rounded-full flex items-center justify-center">
-                <Brain className="w-16 h-16 text-accent" />
+                <Brain className="w-16 h-16 text-accent" aria-hidden="true" />
               </div>
               
               {/* Floating particles */}
