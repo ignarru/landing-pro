@@ -15,9 +15,9 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
-              </div>
+                <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                  <Brain className="w-6 h-6 text-white" aria-hidden="true" />
+                </div>
               <span className="text-2xl font-bold gradient-text">IAbyIA</span>
             </div>
             <p className="text-iabyia-light mb-6 leading-relaxed">
