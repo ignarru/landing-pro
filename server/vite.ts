@@ -23,7 +23,9 @@ export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
-    allowedHosts: true,
+    // "true" is a valid literal value for the allowedHosts option but TypeScript
+    // infers a generic boolean. Cast to the literal type so tsc doesn't error.
+    allowedHosts: true as const,
   };
 
   const vite = await createViteServer({
