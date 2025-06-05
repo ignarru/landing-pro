@@ -32,7 +32,7 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 iabyia-accent rounded-lg flex items-center justify-center">
-              <Brain className="w-6 h-6 text-white" />
+              <Brain className="w-6 h-6 text-white" aria-hidden="true" />
             </div>
             <span className="text-2xl font-bold gradient-text">IAbyIA</span>
           </div>
