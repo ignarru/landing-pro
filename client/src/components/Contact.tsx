@@ -33,17 +33,19 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
+  const { error } = await supabase.from('contacts').insert({
+  name: formData.name,
+  email: formData.email,
+  company: formData.company,
+  message: formData.message
+})
+if (error) {
+  console.error(error)
+  toast({ title: 'Error', description: 'No se pudo enviar el mensaje' })
+  setIsSubmitting(false)
+  return
+}
+toast({ title: '¡Mensaje enviado!', description: 'Nos pondremos en contacto contigo pronto.' })
 
     setFormData({ name: "", email: "", company: "", message: "" });
     setIsSubmitting(false);
