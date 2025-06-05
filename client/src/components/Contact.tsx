@@ -101,42 +101,54 @@ export default function Contact() {
               }`}
             >
               <div className="grid md:grid-cols-2 gap-6">
+                <label className="flex flex-col">
+                  <span className="sr-only">Nombre</span>
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light"
+                  />
+                </label>
+                <label className="flex flex-col">
+                  <span className="sr-only">Email</span>
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light"
+                  />
+                </label>
+              </div>
+              <label className="flex flex-col">
+                <span className="sr-only">Empresa</span>
                 <Input
                   type="text"
-                  name="name"
-                  placeholder="Nombre"
-                  value={formData.name}
+                  name="company"
+                  placeholder="Empresa"
+                  value={formData.company}
                   onChange={handleChange}
-                  required
                   className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light"
                 />
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
+                </label>
+              <label className="flex flex-col">
+                <span className="sr-only">Mensaje</span>
+                <Textarea
+                  name="message"
+                  placeholder="Cuéntanos sobre tu proyecto"
+                  rows={6}
+                  value={formData.message}
                   onChange={handleChange}
                   required
-                  className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light"
-                />
-              </div>
-              <Input
-                type="text"
-                name="company"
-                placeholder="Empresa"
-                value={formData.company}
-                onChange={handleChange}
-                className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light"
-              />
-              <Textarea
-                name="message"
-                placeholder="Cuéntanos sobre tu proyecto"
-                rows={6}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light resize-none"
-              />
+                  className="iabyia-secondary border-gray-700 focus:border-accent bg-secondary text-foreground placeholder:text-iabyia-light resize-none"
+                  />
+                </label>
               <Button
                 type="submit"
                 disabled={isSubmitting}
