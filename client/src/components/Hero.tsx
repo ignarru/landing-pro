@@ -63,8 +63,8 @@ export default function Hero() {
               <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }}></div>
               
               {/* Sparkle effects */}
-              <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" />
-              <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-purple-400 animate-pulse" style={{ animationDelay: "0.5s" }} />
+              <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" aria-hidden="true" />
+              <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-purple-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
             </div>
           </div>
         </div>
