@@ -50,12 +50,20 @@ export default function Hero() {
             para llevar tu empresa al siguiente nivel
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button 
-              onClick={scrollToContact}
+            <Button
+              onClick={handleStartClick}
               className="iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all"
             >
               Comenzar Ahora
             </Button>
+            {showHint && (
+              <div className="mt-6 flex flex-col items-center w-full animate-fade-in">
+                <p className="text-lg sm:text-xl text-iabyia-light mb-2">
+                  Sigue bajando para descubrir más
+                </p>
+                <ChevronsDown className="w-8 h-8 text-accent animate-bounce" />
+              </div>
+            )}
 
           </div>
         </div>
