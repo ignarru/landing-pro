@@ -25,8 +25,8 @@ export default function Hero() {
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
   
-  const scrollToAbout = () => {
-    const element = document.getElementById("acerca");
+  const scrollToContact = () => {
+    const element = document.getElementById("contacto");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
