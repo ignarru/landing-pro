@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NODE_ENV = "production"
+  NPM_FLAGS = "--omit=dev"
+
+[[plugins]]
+package = "@netlify/plugin-cache-core"
