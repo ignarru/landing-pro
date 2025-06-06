@@ -10,6 +10,18 @@ export default function Hero() {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        setIsVisible(false);
+        requestAnimationFrame(() => setIsVisible(true));
+      }
+    };
+
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
+  
   const scrollToContact = () => {
     const element = document.getElementById("contacto");
     if (element) {
