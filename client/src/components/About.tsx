@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Rocket, Eye } from "lucide-react";
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,6 +38,28 @@ export default function About() {
             <p className="text-iabyia-light text-lg leading-relaxed">
               Soy Ignacio Arruvito, consultor en inteligencia artificial y fundador de IAbyIA. Mi objetivo es ayudar a las empresas a adoptar soluciones de IA que impulsen su crecimiento y eficiencia.
             </p>
+            <p className="text-iabyia-light text-lg leading-relaxed mt-4">
+              Cuento con amplia experiencia implementando proyectos de automatización y análisis predictivo para empresas de diversas industrias.
+            </p>
+
+            <div className="mt-8 space-y-6">
+              <div className="flex items-start">
+                <div className="w-10 h-10 iabyia-accent rounded-lg flex items-center justify-center mr-4">
+                  <Rocket className="w-5 h-5 text-white" />
+                </div>
+                <p className="text-iabyia-light leading-relaxed">
+                  Mi misión es democratizar el acceso a tecnologías de IA mediante soluciones personalizadas.
+                </p>
+              </div>
+              <div className="flex items-start">
+                <div className="w-10 h-10 iabyia-highlight rounded-lg flex items-center justify-center mr-4">
+                  <Eye className="w-5 h-5 text-white" />
+                </div>
+                <p className="text-iabyia-light leading-relaxed">
+                  Aspiro a posicionar IAbyIA como la consultora referente para potenciar negocios con inteligencia artificial.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
