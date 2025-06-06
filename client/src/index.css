@@ -197,11 +197,17 @@
 .process-timeline::before {
   content: '';
   position: absolute;
-  left: 1rem;
+  left: 3rem;
   top: 0;
   bottom: 0;
   width: 2px;
   background: linear-gradient(180deg, hsl(var(--iabyia-accent)), hsl(var(--iabyia-highlight)));
+}
+
+@media (min-width: 640px) {
+  .process-timeline::before {
+    left: 3.25rem;
+  }
 }
 
 @media (min-width: 768px) {
