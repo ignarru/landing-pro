@@ -99,7 +99,7 @@ export default function WorkProcess() {
                   
                   {/* Content card */}
                   <div
-                    className={`pt-16 ml-20 sm:ml-24 md:pt-0 md:ml-0 w-full ${
+                    className={`pt-16 pl-20 sm:pl-24 md:pt-0 md:pl-0 w-full ${
                       index % 2 === 0
                         ? "md:w-5/12 md:pr-8"
                         : "md:w-5/12 md:ml-auto md:pl-8"
