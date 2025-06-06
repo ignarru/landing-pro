@@ -4,7 +4,8 @@ This project uses [Supabase](https://supabase.com) to store the contact form sub
 
 ## Environment variables
 
-Copy `.env.example` to `.env` (this file is ignored by Git) and fill in your Supabase credentials, or set these variables in your deployment service:
+Copy `.env.example` to `.env` (this file is ignored by Git) and fill in your Supabase credentials, or set these variables in your deployment service. The example file only contains placeholders, so your deployment environment must provide actual credentials:
+
 
 ```bash
 cp .env.example .env
