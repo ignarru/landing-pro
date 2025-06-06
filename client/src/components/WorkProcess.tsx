@@ -36,7 +36,7 @@ const processSteps: ProcessStep[] = [
     title: "Optimización",
     description: "Monitoreamos y optimizamos continuamente para maximizar resultados.",
     icon: <Zap className="w-6 h-6 text-white" />,
-    color: "bg-purple-500"
+    color: "bg-blue-800"
   }
 ];
 
