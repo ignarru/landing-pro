@@ -51,21 +51,21 @@ export default function Hero() {
           <div className="relative animate-float">
             <div className="w-32 h-32 mx-auto relative">
               {/* Outer glow */}
-              <div className="absolute inset-0 bg-purple-500 rounded-full opacity-20 animate-pulse-soft"></div>
+              <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-pulse-soft"></div>
               
               {/* Main brain container */}
-              <div className="absolute inset-4 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="absolute inset-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
                 <DetailedBrain className="w-20 h-20 text-white" aria-hidden="true" />
               </div>
               
               {/* Floating particles */}
-              <div className="absolute top-4 left-4 w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 right-4 w-2 h-2 bg-purple-600 rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping"></div>
+              <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
               <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }}></div>
               
               {/* Sparkle effects */}
               <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" aria-hidden="true" />
-              <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-purple-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
+              <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-blue-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
             </div>
           </div>
         </div>
