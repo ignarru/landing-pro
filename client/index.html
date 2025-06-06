@@ -35,6 +35,25 @@
       crossorigin
     />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      #cookie-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        display: none;
+        z-index: 1000;
+      }
+      #cookie-banner button {
+        margin-left: 0.5rem;
+      }
+    </style>
+    
     <noscript
       ><link
         rel="stylesheet"
@@ -43,7 +62,38 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="cookie-banner">
+      Usamos cookies para mejorar tu experiencia. Al aceptar, permites el uso de
+      cookies para analítica.
+      <button id="cookie-accept">Aceptar</button>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        const banner = document.getElementById('cookie-banner');
+        const consentKey = 'analytics-consent';
+        function loadAnalytics() {
+          const gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-123456789';
+          document.head.appendChild(gaScript);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-123456789', { anonymize_ip: true });
+        }
+        if (localStorage.getItem(consentKey)) {
+          loadAnalytics();
+        } else {
+          banner.style.display = 'block';
+        }
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+          localStorage.setItem(consentKey, 'true');
+          banner.style.display = 'none';
+          loadAnalytics();
+        });
+      })();
+    </script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
