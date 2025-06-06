@@ -177,7 +177,7 @@ export default function Services() {
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="h-20 bg-gradient-to-t from-accent to-blue-400 rounded-lg animate-pulse-soft"></div>
                   <div className="h-32 bg-gradient-to-t from-green-500 to-emerald-400 rounded-lg animate-pulse-soft" style={{ animationDelay: "0.5s" }}></div>
-                  <div className="h-16 bg-gradient-to-t from-purple-500 to-violet-400 rounded-lg animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
+                  <div className="h-16 bg-gradient-to-t from-blue-700 to-blue-500 rounded-lg animate-pulse-soft" style={{ animationDelay: "1s" }}></div>
                 </div>
                 <div className="flex items-center justify-between text-sm text-iabyia-light">
                   <span>Eficiencia</span>
