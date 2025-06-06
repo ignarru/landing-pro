@@ -18,3 +18,11 @@ SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
 ```
 
 The client sends contact requests to `/api/contact` and the server inserts them into Supabase using these credentials.
+
+## Start the server
+
+Run the development server with:
+
+```bash
+npm run start
+```
