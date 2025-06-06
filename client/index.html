@@ -48,9 +48,26 @@
         text-align: center;
         display: none;
         z-index: 1000;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
       }
       #cookie-banner button {
-        margin-left: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+      }
+      @media (min-width: 640px) {
+        #cookie-banner {
+          flex-direction: row;
+        }
+        #cookie-banner button {
+          margin-top: 0;
+          margin-left: 0.5rem;
+        }
       }
     </style>
     
@@ -85,7 +102,7 @@
         if (localStorage.getItem(consentKey)) {
           loadAnalytics();
         } else {
-          banner.style.display = 'block';
+          banner.style.display = 'flex';
         }
         document.getElementById('cookie-accept').addEventListener('click', () => {
           localStorage.setItem(consentKey, 'true');
