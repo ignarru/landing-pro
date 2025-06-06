@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabase";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,16 +36,23 @@ export default function Contact() {
  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const { error } = await supabase.from("contacts").insert(formData);
-    if (error) {
-      console.error(error);
-      toast({ title: "Error", description: "No se pudo enviar el mensaje" });
-    } else {
+   
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
       toast({
         title: "¡Mensaje enviado!",
         description: "Nos pondremos en contacto contigo pronto.",
       });
       setFormData({ name: "", email: "", company: "", message: "" });
+       } catch (err) {
+      console.error(err);
+      toast({ title: "Error", description: "No se pudo enviar el mensaje" });
     }
     setIsSubmitting(false);
   };
