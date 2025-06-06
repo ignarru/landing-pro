@@ -3,18 +3,21 @@ import { Sparkles } from "lucide-react";
 import DetailedBrain from "./DetailedBrain";
 import { Button } from "@/components/ui/button";
 
+const HERO_DELAY_MS = 600;
+
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     const handlePageShow = (event: PageTransitionEvent) => {
       if (event.persisted) {
         setIsVisible(false);
-        requestAnimationFrame(() => setIsVisible(true));
+        setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
       }
     };
 
