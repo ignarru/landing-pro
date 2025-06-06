@@ -201,7 +201,9 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, hsl(var(--iabyia-accent)), hsl(var(--iabyia-highlight)));
+  background: linear-gradient(180deg, hsl(var(--iabyia-accent)), #22c55e, #3b82f6, #1e40af);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 640px) {
