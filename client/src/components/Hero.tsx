@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Brain, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import DetailedBrain from "./DetailedBrain";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
