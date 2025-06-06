@@ -67,7 +67,7 @@ export default function Contact() {
   return (
     <>
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent to-purple-600">
+      <section className="py-20 bg-gradient-to-r from-accent to-blue-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
             ¿Listo para Transformar tu Negocio?
