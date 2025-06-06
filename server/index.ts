@@ -1,10 +1,21 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// serve crawler-specific files from the client public directory so they are
+// always accessible regardless of the environment
+app.get("/robots.txt", (_req, res) => {
+  res.sendFile(path.resolve(import.meta.dirname, "../client/public/robots.txt"));
+});
+
+app.get("/sitemap.xml", (_req, res) => {
+  res.sendFile(path.resolve(import.meta.dirname, "../client/public/sitemap.xml"));
+});
 
 app.use((req, res, next) => {
   const start = Date.now();
