@@ -7,6 +7,7 @@ const HERO_DELAY_MS = 600;
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -25,11 +26,8 @@ export default function Hero() {
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
   
-  const scrollToContact = () => {
-    const element = document.getElementById("contacto");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleStartClick = () => {
+    setShowHint(true);
   };
 
   return (
