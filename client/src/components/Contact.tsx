@@ -34,21 +34,20 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const { error } = await supabase.from('contacts').insert({
-  name: formData.name,
-  email: formData.email,
-  company: formData.company,
-  message: formData.message
-})
-if (error) {
-  console.error(error)
-  toast({ title: 'Error', description: 'No se pudo enviar el mensaje' })
-  setIsSubmitting(false)
-  return
-}
-toast({ title: '¡Mensaje enviado!', description: 'Nos pondremos en contacto contigo pronto.' })
-
-    setFormData({ name: "", email: "", company: "", message: "" });
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const { error } = await supabase.from("contacts").insert(formData);
+    if (error) {
+      console.error(error);
+      toast({ title: "Error", description: "No se pudo enviar el mensaje" });
+    } else {
+      toast({
+        title: "¡Mensaje enviado!",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
+      setFormData({ name: "", email: "", company: "", message: "" });
+    }
     setIsSubmitting(false);
   };
 
