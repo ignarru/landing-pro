@@ -13,7 +13,7 @@ const processSteps: ProcessStep[] = [
   {
     number: 1,
     title: "Análisis Inicial",
-    description: "Evaluamos tu negocio y identificamos oportunidades de mejora con IA.",
+    description: "Evaluamos tu negocio e identificamos oportunidades de mejora con IA.",
     icon: <Search className="w-6 h-6 text-white" />,
     color: "iabyia-accent"
   },
