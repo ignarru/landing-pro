@@ -27,3 +27,8 @@ Run the development server with:
 ```bash
 npm run start
 ```
+
+## About section
+
+A personal "Acerca de mí" section appears before the services listing. You can edit the content in `client/src/components/About.tsx` and replace the photo at `client/public/profile.png`.
+
