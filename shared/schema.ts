@@ -17,6 +17,11 @@ export const contacts = pgTable("contacts", {
   receivedAt: timestamp("received_at").defaultNow(),
 });
 
+export const insertContactSchema = createInsertSchema(contacts).omit({
+  id: true,
+  receivedAt: true,
+});
+export type InsertContact = z.infer<typeof insertContactSchema>;
 
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
