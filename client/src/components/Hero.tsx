@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ChevronsDown } from "lucide-react";
 import DetailedBrain from "./DetailedBrain";
 import { Button } from "@/components/ui/button";
 
