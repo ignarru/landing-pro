@@ -88,7 +88,9 @@ export default function WorkProcess() {
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   {/* Step number circle */}
-                  <div className={`absolute left-6 md:left-1/2 md:transform md:-translate-x-1/2 w-16 h-16 ${step.color} rounded-full flex items-center justify-center z-10 shadow-lg`}>
+                  <div
+                    className={`absolute left-6 md:left-1/2 md:transform md:-translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${step.color} rounded-full flex items-center justify-center z-10 shadow-lg`}
+                  >
                     <div className="flex flex-col items-center">
                       {step.icon}
                       <span className="text-white font-bold text-sm mt-1">{step.number}</span>
@@ -96,11 +98,13 @@ export default function WorkProcess() {
                   </div>
                   
                   {/* Content card */}
-                  <div className={`ml-24 md:ml-0 w-full ${
-                    index % 2 === 0 
-                      ? "md:w-5/12 md:pr-8" 
-                      : "md:w-5/12 md:ml-auto md:pl-8"
-                  }`}>
+                  <div
+                    className={`pt-16 ml-20 sm:ml-24 md:pt-0 md:ml-0 w-full ${
+                      index % 2 === 0
+                        ? "md:w-5/12 md:pr-8"
+                        : "md:w-5/12 md:ml-auto md:pl-8"
+                    }`}
+                  >
                     <div className="glass-effect rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300">
                       <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
                       <p className="text-iabyia-light leading-relaxed">
