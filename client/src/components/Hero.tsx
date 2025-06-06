@@ -51,16 +51,16 @@ export default function Hero() {
           <div className="relative animate-float">
             <div className="w-32 h-32 mx-auto relative">
               {/* Outer glow */}
-              <div className="absolute inset-0 iabyia-accent rounded-full opacity-20 animate-pulse-soft"></div>
+              <div className="absolute inset-0 bg-purple-500 rounded-full opacity-20 animate-pulse-soft"></div>
               
               {/* Main brain container */}
-              <div className="absolute inset-4 bg-gradient-to-br from-iabyia-accent to-iabyia-highlight rounded-full flex items-center justify-center">
+              <div className="absolute inset-4 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
                 <DetailedBrain className="w-20 h-20 text-white" aria-hidden="true" />
               </div>
               
               {/* Floating particles */}
-              <div className="absolute top-4 left-4 w-3 h-3 iabyia-accent rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 right-4 w-2 h-2 iabyia-highlight rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
+              <div className="absolute top-4 left-4 w-3 h-3 bg-pink-500 rounded-full animate-ping"></div>
+              <div className="absolute bottom-4 right-4 w-2 h-2 bg-purple-600 rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
               <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }}></div>
               
               {/* Sparkle effects */}
