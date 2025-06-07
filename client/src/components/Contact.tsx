@@ -88,8 +88,8 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <div className={`text-center mb-16 ${
-            isVisible ? "animate-fade-in-up" : "opacity-0"
+      <div className={`text-center mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           <div className={`text-center mb-16 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
@@ -104,8 +104,8 @@ export default function Contact() {
           <div className="max-w-2xl mx-auto">
             <form
               onSubmit={handleSubmit}
-              className={`space-y-6 delay-300 ${
-                isVisible ? "animate-fade-in-up" : "opacity-0"
+              className={`space-y-6 transition-all duration-700 delay-300 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
               <div className="grid md:grid-cols-2 gap-6">
