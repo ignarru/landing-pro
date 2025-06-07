@@ -36,8 +36,8 @@ export default function Hero() {
   const generateSparkles = (count: number) => {
     return Array.from({ length: count }).map((_, idx) => ({
       id: Date.now() + idx,
-      x: `${Math.random() * 80 - 40}px`,
-      y: `${Math.random() * 80 - 40}px`,
+      x: `${Math.random() * 120 - 60}px`,
+      y: `${Math.random() * 120 - 60}px`,
     }));
   };
   
