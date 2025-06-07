@@ -77,11 +77,14 @@ export default function Services() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.target === mainSectionRef.current) {
-            setIsMainVisible(entry.isIntersecting);
-          }
-          if (entry.target === specializedSectionRef.current) {
-            setIsSpecializedVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            if (entry.target === mainSectionRef.current) {
+              setIsMainVisible(true);
+            }
+            if (entry.target === specializedSectionRef.current) {
+              setIsSpecializedVisible(true);
+            }
+            observer.unobserve(entry.target);
           }
         });
       },
