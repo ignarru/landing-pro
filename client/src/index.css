@@ -171,6 +171,7 @@
 
   .animate-brain-spin {
     animation: brain-spin 1s ease-in-out;
+    transform-style: preserve-3d;
   }
 }
 
@@ -227,10 +228,10 @@
 
 @keyframes brain-spin {
   from {
-    transform: rotate(0deg);
+    transform: perspective(600px) rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: perspective(600px) rotateY(360deg);
   }
 }
 
