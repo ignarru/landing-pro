@@ -72,11 +72,7 @@ export default function Navigation() {
               Acerca de mí
             </button>
             <button
-              onClick={() =>
-                isMobile
-                  ? scrollToSection("servicios")
-                  : scrollToSection("servicios-especializados")
-              }
+              onClick={() => scrollToSection("servicios")}
               className="text-white hover:text-accent transition-colors focus-visible:focus"
             >
               Servicios
