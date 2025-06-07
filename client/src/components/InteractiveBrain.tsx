@@ -3,11 +3,20 @@ import { cn } from "@/lib/utils";
 interface Props {
   className?: string;
   onInteraction?: () => void;
+  active?: boolean
 }
-export default function InteractiveBrain({ className, onInteraction }: Props) {
+export default function InteractiveBrain({
+  className,
+  onInteraction,
+  active,
+}: Props) {
   return (
     <div
-      className={cn("w-32 h-32 mx-auto relative", className)}
+      className={cn(
+        "w-32 h-32 mx-auto relative",
+        className,
+        active && "animate-brain-spin"
+      )}
       onClick={() => onInteraction?.()}
     >
       <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-pulse-soft" />
