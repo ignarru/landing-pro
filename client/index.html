@@ -44,20 +44,24 @@
 
     <style>
       #cookie-banner {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.85);
-        color: #fff;
-        padding: 1rem;
-        text-align: center;
-        display: none;
-        z-index: 1000;
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: center;
-      }
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.85);
+          color: #fff;
+          padding: 1rem;
+          text-align: center;
+          display: none;
+          z-index: 1000;
+          flex-direction: column;
+          gap: 0.75rem;
+          align-items: center;
+          justify-content: center;
+        }
+        #cookie-text {
+          flex: 1;
+        }
       #cookie-banner button {
         padding: 0.5rem 1rem;
         background-color: hsl(var(--primary));
