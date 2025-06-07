@@ -26,13 +26,17 @@ export default function Hero() {
     window.addEventListener("pageshow", handlePageShow);
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
+
+  const triggerBurst = () => {
+    setBurstActive(true);
+    setTimeout(() => setBurstActive(false), 1000);
+  };
   
   const handleStartClick = () => {
     setBrainActive(true);
-    setBurstActive(true);
+    triggerBurst()
     setTimeout(() => {
       setBrainActive(false);
-      setBurstActive(false);
     }, 1000);
   };
 
@@ -72,53 +76,44 @@ export default function Hero() {
         <div className={`transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
-          <div
-            className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}
-          >
-            <div className="w-32 h-32 mx-auto relative">
-              {/* Outer glow */}
-              <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-pulse-soft"></div>
-              
-              {/* Main brain container */}
-              <div className="absolute inset-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
-                <DetailedBrain className="w-20 h-20 text-white" aria-hidden="true" />
-              </div>
-              
-              {/* Floating particles */}
-              <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
-              <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }}></div>
+          <div className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}>
+            <InteractiveBrain
+              className="mx-auto"
+              onInteraction={() => setBurstActive(true)}
+            />
 
-              {burstActive && (
-                <>
-                  <span
-                    className="particle-burst"
-                    style={{
-                      '--burst-x': '40px',
-                      '--burst-y': '-20px',
-                    } as React.CSSProperties}
-                  />
-                  <span
-                    className="particle-burst"
-                    style={{
-                      '--burst-x': '-30px',
-                      '--burst-y': '-30px',
-                    } as React.CSSProperties}
-                  />
-                  <span
-                    className="particle-burst"
-                    style={{
-                      '--burst-x': '20px',
-                      '--burst-y': '35px',
-                    } as React.CSSProperties}
-                  />
-                </>
-              )}
-              
-              {/* Sparkle effects */}
+            <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping" />
+            <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }} />
+            <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }} />
+
+            {burstActive && (
+              <>
+                <span
+                  className="particle-burst"
+                  style={{
+                    '--burst-x': '40px',
+                    '--burst-y': '-20px',
+                  } as React.CSSProperties}
+                />
+                <span
+                  className="particle-burst"
+                  style={{
+                    '--burst-x': '-30px',
+                    '--burst-y': '-30px',
+                  } as React.CSSProperties}
+                />
+                <span
+                  className="particle-burst"
+                  style={{
+                    '--burst-x': '20px',
+                    '--burst-y': '35px',
+                  } as React.CSSProperties}
+                />
+              </>
+            )}
+
               <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" aria-hidden="true" />
-              <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-blue-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
-            </div>
+            <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-blue-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
           </div>
         </div>
       </div>
