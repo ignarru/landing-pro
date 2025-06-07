@@ -7,6 +7,7 @@ const HERO_DELAY_MS = 600;
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [brainActive, setBrainActive] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -30,6 +31,8 @@ export default function Hero() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
+    setBrainActive(true);
+    setTimeout(() => setBrainActive(false), 1000);
   };
 
   return (
@@ -68,7 +71,9 @@ export default function Hero() {
         <div className={`transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
-          <div className="relative animate-float">
+          <div
+            className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}
+          >
             <div className="w-32 h-32 mx-auto relative">
               {/* Outer glow */}
               <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 animate-pulse-soft"></div>
