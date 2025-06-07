@@ -172,7 +172,8 @@ export default function Services() {
       </section>
 
       {/* Specialized Services Section */}
-      <section 
+      <section
+        id="servicios-especializados"
         ref={specializedSectionRef}
         className="py-16 sm:py-20 bg-gradient-to-br from-background to-secondary"
       >
