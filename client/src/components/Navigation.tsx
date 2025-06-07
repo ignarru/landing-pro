@@ -6,6 +6,7 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +20,7 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = navRef.current?.offsetHeight ?? 0;
+      const navHeight = barRef.current?.offsetHeight ?? 0;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset - navHeight;
       window.scrollTo({ top: elementPosition, behavior: "smooth" });
@@ -35,7 +36,7 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div ref={barRef} className="flex justify-between items-center py-4">
           {/* Logo */}
           <div
             className="flex items-center space-x-2 cursor-pointer"
