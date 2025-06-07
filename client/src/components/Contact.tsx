@@ -90,7 +90,7 @@ export default function Contact() {
       {/* CTA Section */}
       <section
         ref={ctaRef}
-        className={`py-20 bg-gradient-to-r from-accent to-blue-900 transition-all duration-700 ${
+        className={`py-16 sm:py-20 bg-gradient-to-r from-accent to-blue-900 transition-all duration-700 ${
           ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -119,7 +119,7 @@ export default function Contact() {
       <section
         id="contacto"
         ref={formRef}
-        className={`py-20 text-center transition-all duration-700 ${
+        className={`py-16 sm:py-20 text-center transition-all duration-700 ${
           formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -141,7 +141,7 @@ export default function Contact() {
               formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                 <label className="flex flex-col">
                   <span className="sr-only">Nombre</span>
                   <Input
