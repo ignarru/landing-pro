@@ -8,6 +8,7 @@ const HERO_DELAY_MS = 600;
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
+  const [burstActive, setBurstActive] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -27,12 +28,12 @@ export default function Hero() {
   }, []);
   
   const handleStartClick = () => {
-    const aboutSection = document.getElementById("acerca");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
     setBrainActive(true);
-    setTimeout(() => setBrainActive(false), 1000);
+    setBurstActive(true);
+    setTimeout(() => {
+      setBrainActive(false);
+      setBurstActive(false);
+    }, 1000);
   };
 
   return (
@@ -87,6 +88,32 @@ export default function Hero() {
               <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping"></div>
               <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }}></div>
               <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }}></div>
+
+              {burstActive && (
+                <>
+                  <span
+                    className="particle-burst"
+                    style={{
+                      '--burst-x': '40px',
+                      '--burst-y': '-20px',
+                    } as React.CSSProperties}
+                  />
+                  <span
+                    className="particle-burst"
+                    style={{
+                      '--burst-x': '-30px',
+                      '--burst-y': '-30px',
+                    } as React.CSSProperties}
+                  />
+                  <span
+                    className="particle-burst"
+                    style={{
+                      '--burst-x': '20px',
+                      '--burst-y': '35px',
+                    } as React.CSSProperties}
+                  />
+                </>
+              )}
               
               {/* Sparkle effects */}
               <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" aria-hidden="true" />
