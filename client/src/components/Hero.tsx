@@ -154,17 +154,17 @@ export default function Hero() {
               />
               <Sparkles
                 className={`absolute -bottom-3 left-4 w-4 h-4 text-blue-400 animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
-                style={{ '--star-x': '-12px', '--star-y': '12px', animationDelay: '0.5s' } as React.CSSProperties}
+                style={{ '--star-x': '-12px', '--star-y': '12px' } as React.CSSProperties}
                 aria-hidden="true"
               />
             <Sparkles
-                className={`absolute -top-3 right-4 w-6 h-6 text-accent animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
-                style={{ '--star-x': '12px', '--star-y': '-12px' } as React.CSSProperties}
+                className={`absolute -top-3 left-4 w-6 h-6 text-accent animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
+                style={{ '--star-x': '-12px', '--star-y': '-12px' } as React.CSSProperties}
                 aria-hidden="true"
               />
               <Sparkles
-                className="absolute -top-3 left-4 w-4 h-4 text-blue-400 animate-pulse"
-                aria-hidden="true"
+                className={`absolute -top-3 right-4 w-4 h-4 text-blue-400 animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
+                style={{ '--star-x': '12px', '--star-y': '-12px' } as React.CSSProperties}
               />
           </div>
         </div>
