@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sparkles, ChevronsDown } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import DetailedBrain from "./DetailedBrain";
 import { Button } from "@/components/ui/button";
 
@@ -7,7 +7,6 @@ const HERO_DELAY_MS = 600;
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -27,7 +26,10 @@ export default function Hero() {
   }, []);
   
   const handleStartClick = () => {
-    setShowHint(true);
+    const aboutSection = document.getElementById("acerca");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
