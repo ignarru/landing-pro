@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sparkles } from "lucide-react";
-import DetailedBrain from "./DetailedBrain";
+import InteractiveBrain from "./InteractiveBrain";
 import { Button } from "@/components/ui/button";
 
 const HERO_DELAY_MS = 600;
