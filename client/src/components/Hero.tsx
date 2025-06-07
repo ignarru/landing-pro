@@ -58,14 +58,6 @@ export default function Hero() {
             >
               Comenzar Ahora
             </Button>
-            {showHint && (
-              <div className="mt-6 flex flex-col items-center w-full animate-fade-in">
-                <p className="text-lg sm:text-xl text-iabyia-light mb-2">
-                  Sigue bajando para descubrir más
-                </p>
-                <ChevronsDown className="w-8 h-8 text-accent animate-bounce" />
-              </div>
-            )}
 
           </div>
         </div>
