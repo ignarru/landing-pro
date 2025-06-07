@@ -51,7 +51,7 @@ export default function About() {
                   <Rocket className="w-5 h-5 text-white" />
                 </div>
                 <p className="text-iabyia-light leading-relaxed">
-                  Impulso emprendedores con soluciones de IA accesibles y potentes.
+                  Llevo la inteligencia artificial a emprendedores que quieren escalar con propósito y construir el futuro desde hoy.
                 </p>
               </div>
               <div className="flex items-start">
