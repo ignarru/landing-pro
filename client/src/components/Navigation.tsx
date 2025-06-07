@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Brain, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
   const navRef = useRef<HTMLElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
 
@@ -21,8 +23,13 @@ export default function Navigation() {
     const element = document.getElementById(sectionId);
     if (element) {
       const navHeight = barRef.current?.offsetHeight ?? 0;
+      const extraOffset = isMobile ? 0 : -80;
       const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset - navHeight + offset;
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        navHeight +
+        offset +
+        extraOffset;
       window.scrollTo({ top: elementPosition, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
