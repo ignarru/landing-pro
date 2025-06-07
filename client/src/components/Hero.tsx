@@ -9,6 +9,7 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
   const [burstActive, setBurstActive] = useState(false);
+  const [starsExpanded, setStarsExpanded] = useState(false);
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
@@ -45,6 +46,8 @@ export default function Hero() {
   };
   
   const handleStartClick = () => {
+    setStarsExpanded(true);
+    setTimeout(() => setStarsExpanded(false), 800);
     setBrainActive(true);
     triggerBurst();
     setSparkles(generateSparkles(8));
@@ -145,22 +148,23 @@ export default function Hero() {
             ))}
             
               <Sparkles
-                className="absolute -bottom-3 right-4 w-6 h-6 text-accent animate-pulse"
+                className={`absolute -bottom-3 right-4 w-6 h-6 text-accent animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
+                style={{ '--star-x': '12px', '--star-y': '12px' } as React.CSSProperties}
                 aria-hidden="true"
               />
               <Sparkles
-                className="absolute -bottom-3 left-4 w-4 h-4 text-blue-400 animate-pulse"
+                className={`absolute -bottom-3 left-4 w-4 h-4 text-blue-400 animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
+                style={{ '--star-x': '-12px', '--star-y': '12px', animationDelay: '0.5s' } as React.CSSProperties}
                 aria-hidden="true"
-                style={{ animationDelay: "0.5s" }}
               />
             <Sparkles
-                className="absolute -top-3 right-4 w-6 h-6 text-accent animate-pulse"
+                className={`absolute -top-3 right-4 w-6 h-6 text-accent animate-pulse ${starsExpanded ? 'star-expand' : ''}`}
+                style={{ '--star-x': '12px', '--star-y': '-12px' } as React.CSSProperties}
                 aria-hidden="true"
               />
               <Sparkles
                 className="absolute -top-3 left-4 w-4 h-4 text-blue-400 animate-pulse"
                 aria-hidden="true"
-                style={{ animationDelay: "0.5s" }}
               />
           </div>
         </div>
