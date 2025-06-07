@@ -8,4 +8,4 @@
   NPM_FLAGS = "--omit=dev"
 
 [[plugins]]
-package = "@netlify/plugin-cache-core"
+package = "@netlify/plugin-cache"
