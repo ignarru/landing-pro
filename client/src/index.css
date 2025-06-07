@@ -45,11 +45,13 @@
   
   .sparkle-burst {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     color: hsl(var(--iabyia-accent));
+    filter: drop-shadow(0 0 4px hsl(var(--iabyia-accent)));
     pointer-events: none;
     animation: sparkle-burst 0.8s ease-out forwards;
+    transform-origin: center;
   }
 }
 
@@ -67,11 +69,12 @@
 @keyframes sparkle-burst {
   from {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
   to {
     opacity: 0;
-    transform: translate(var(--burst-x), var(--burst-y)) scale(0.5);
+    transform: translate(var(--burst-x), var(--burst-y))
+      scale(0.5) rotate(var(--burst-rot, 180deg));
   }
 }
 
