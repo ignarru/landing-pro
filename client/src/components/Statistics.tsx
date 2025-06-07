@@ -24,8 +24,9 @@ export default function Statistics() {
       ([entry]) => {
         if (entry.isIntersecting) {
           animateCounters();
+          setIsVisible(true);
+          observer.unobserve(entry.target);
         }
-        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.3 }
     );
@@ -35,7 +36,7 @@ export default function Statistics() {
     }
 
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, []);
 
   const animateCounters = () => {
     stats.forEach((stat, index) => {
