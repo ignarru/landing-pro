@@ -149,6 +149,10 @@
   .text-iabyia-light {
     color: hsl(var(--iabyia-text-light));
   }
+
+  .text-iabyia-highlight {
+    color: hsl(var(--iabyia-highlight));
+  }
 }
 
 @layer utilities {
