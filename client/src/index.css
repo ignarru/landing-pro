@@ -42,6 +42,15 @@
     pointer-events: none;
     animation: particle-burst 0.8s ease-out forwards;
   }
+  
+  .sparkle-burst {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    color: hsl(var(--iabyia-accent));
+    pointer-events: none;
+    animation: sparkle-burst 0.8s ease-out forwards;
+  }
 }
 
 @keyframes particle-burst {
@@ -52,6 +61,17 @@
   to {
     opacity: 0;
     transform: translate(var(--burst-x), var(--burst-y)) scale(1.5);
+  }
+}
+
+@keyframes sparkle-burst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--burst-x), var(--burst-y)) scale(0.5);
   }
 }
 
