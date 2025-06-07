@@ -84,11 +84,15 @@
     /></noscript>
   </head>
   <body>
+    <a
+      href="#inicio"
+      class="sr-only focus:not-sr-only absolute left-2 top-2 bg-background text-foreground p-2 rounded"
+    >Saltar al contenido</a>
     <div id="root"></div>
-    <div id="cookie-banner">
+    <div id="cookie-banner" role="dialog" aria-live="polite" aria-modal="true">
       Usamos cookies para mejorar tu experiencia. Al aceptar, permites el uso de
       cookies para analítica.
-      <button id="cookie-accept">Aceptar</button>
+      <button id="cookie-accept" type="button">Aceptar</button>
     </div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
