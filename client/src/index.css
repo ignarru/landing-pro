@@ -32,6 +32,29 @@
   --iabyia-text-light: 240 5% 64.9%; /* Light gray text */
 }
 
+@layer utilities {
+  .particle-burst {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background-color: hsl(var(--iabyia-accent));
+    pointer-events: none;
+    animation: particle-burst 0.8s ease-out forwards;
+  }
+}
+
+@keyframes particle-burst {
+  from {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--burst-x), var(--burst-y)) scale(1.5);
+  }
+}
+
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
