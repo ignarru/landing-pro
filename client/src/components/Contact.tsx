@@ -105,7 +105,17 @@ export default function Contact() {
           <Button
             onClick={() => {
               const element = document.getElementById("contacto");
-              if (element) element.scrollIntoView({ behavior: "smooth" });
+              if (element) {
+                const nav = document.querySelector("nav");
+                const navHeight = (nav as HTMLElement)?.offsetHeight ?? 0;
+                const offset = window.innerWidth < 768 ? -100 : 0;
+                const elementPosition =
+                  element.getBoundingClientRect().top +
+                  window.pageYOffset -
+                  navHeight +
+                  offset;
+                window.scrollTo({ top: elementPosition, behavior: "smooth" });
+              }
             }}
             type="button"
             aria-label="Ir al formulario de contacto"
