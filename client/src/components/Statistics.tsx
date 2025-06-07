@@ -22,10 +22,10 @@ export default function Statistics() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
+        if (entry.isIntersecting) {
           animateCounters();
         }
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.3 }
     );
