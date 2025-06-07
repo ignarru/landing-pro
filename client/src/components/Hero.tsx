@@ -9,7 +9,9 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
   const [burstActive, setBurstActive] = useState(false);
-  const [sparkles, setSparkles] = useState<{ id: number; x: string; y: string }[]>([]);
+  const [sparkles, setSparkles] = useState<
+    { id: number; x: string; y: string; rot: string }[]
+  >([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -38,6 +40,7 @@ export default function Hero() {
       id: Date.now() + idx,
       x: `${Math.random() * 120 - 60}px`,
       y: `${Math.random() * 120 - 60}px`,
+      rot: `${Math.random() * 360}deg`,
     }));
   };
   
@@ -135,6 +138,7 @@ export default function Hero() {
                 style={{
                   '--burst-x': sp.x,
                   '--burst-y': sp.y,
+                  '--burst-rot': sp.rot,
                 } as React.CSSProperties}
                 aria-hidden="true"
               />
