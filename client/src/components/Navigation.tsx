@@ -17,12 +17,12 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string, offset = 0) => {
     const element = document.getElementById(sectionId);
     if (element) {
       const navHeight = barRef.current?.offsetHeight ?? 0;
       const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        element.getBoundingClientRect().top + window.pageYOffset - navHeight + offset;
       window.scrollTo({ top: elementPosition, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
@@ -77,7 +77,7 @@ export default function Navigation() {
               Proceso
             </button>
             <Button
-              onClick={() => scrollToSection("transformar")}
+              onClick={() => scrollToSection("transformar", -100)}
               type="button"
               aria-label="Ir a la sección de consulta"
               className="iabyia-accent hover:opacity-90 text-white font-medium px-6 py-2 rounded-full"
@@ -125,7 +125,7 @@ export default function Navigation() {
                 Proceso
               </button>
               <Button
-                onClick={() => scrollToSection("transformar")}
+                onClick={() => scrollToSection("transformar", -100)}
                 type="button"
                 aria-label="Ir a la sección de consulta"
                 className="iabyia-accent hover:opacity-90 text-white font-medium w-full"
