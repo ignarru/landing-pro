@@ -87,7 +87,11 @@ export default function Hero() {
         <div className={`transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
-          <div className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}>
+          <div
+            className={`relative w-fit mx-auto animate-float ${
+              brainActive ? "animate-bounce" : ""
+            }`}
+          >
             <InteractiveBrain
               className="mx-auto"
               active={brainActive}
