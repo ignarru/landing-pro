@@ -9,6 +9,7 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [brainActive, setBrainActive] = useState(false);
   const [burstActive, setBurstActive] = useState(false);
+  const [sparkles, setSparkles] = useState<{ id: number; x: string; y: string }[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -31,11 +32,21 @@ export default function Hero() {
     setBurstActive(true);
     setTimeout(() => setBurstActive(false), 1000);
   };
+
+  const generateSparkles = (count: number) => {
+    return Array.from({ length: count }).map((_, idx) => ({
+      id: Date.now() + idx,
+      x: `${Math.random() * 80 - 40}px`,
+      y: `${Math.random() * 80 - 40}px`,
+    }));
+  };
   
   const handleStartClick = () => {
     setBrainActive(true);
-    triggerBurst()
+    triggerBurst();
+    setSparkles(generateSparkles(8));
     setTimeout(() => {
+      setSparkles([]);
       setBrainActive(false);
     }, 1000);
   };
@@ -77,10 +88,7 @@ export default function Hero() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
           <div className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}>
-            <InteractiveBrain
-              className="mx-auto"
-              onInteraction={() => setBurstActive(true)}
-            />
+            <InteractiveBrain className="mx-auto" />
 
             <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping" />
             <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }} />
@@ -112,6 +120,18 @@ export default function Hero() {
               </>
             )}
 
+            {sparkles.map((sp) => (
+              <Sparkles
+                key={sp.id}
+                className="sparkle-burst"
+                style={{
+                  '--burst-x': sp.x,
+                  '--burst-y': sp.y,
+                } as React.CSSProperties}
+                aria-hidden="true"
+              />
+            ))}
+            
               <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-accent animate-pulse" aria-hidden="true" />
             <Sparkles className="absolute -bottom-2 -left-2 w-4 h-4 text-blue-400 animate-pulse" aria-hidden="true" style={{ animationDelay: "0.5s" }} />
           </div>
