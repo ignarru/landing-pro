@@ -120,6 +120,8 @@ export default function Services() {
   const [isSpecializedVisible, setIsSpecializedVisible] = useState(false);
   const mainSectionRef = useRef<HTMLElement>(null);
   const specializedSectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
+  const { ref: roiRef, isInView: isRoiVisible } = useInView<HTMLDivElement>({ threshold: 0.2 });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -191,9 +193,14 @@ export default function Services() {
             </div>
             
             {/* Data Visualization Illustration */}
-            <div className={`relative transition-all duration-700 delay-300 ${
-              isSpecializedVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-            }`}>
+            <div
+              ref={roiRef}
+              className={`relative transition-all duration-700 delay-300 ${
+                (isMobile ? isRoiVisible : isSpecializedVisible)
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-10"
+              }`}
+            >
               <div className="glass-effect rounded-3xl p-8 animate-float">
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="h-20 bg-gradient-to-t from-accent to-blue-400 rounded-lg animate-pulse-soft"></div>
