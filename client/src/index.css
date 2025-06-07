@@ -53,6 +53,10 @@
     animation: sparkle-burst 0.8s ease-out forwards;
     transform-origin: center;
   }
+
+  .star-expand {
+    animation: star-expand 0.8s ease-out;
+  }
 }
 
 @keyframes particle-burst {
@@ -75,6 +79,15 @@
     opacity: 0;
     transform: translate(var(--burst-x), var(--burst-y))
       scale(0.5) rotate(var(--burst-rot, 180deg));
+  }
+}
+
+@keyframes star-expand {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(var(--star-x), var(--star-y)) scale(1.5);
   }
 }
 
