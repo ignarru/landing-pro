@@ -51,23 +51,23 @@ export default function Navigation() {
             role="button"
             aria-label="Ir al inicio"
           >
-            <div className="w-10 h-10 iabyia-highlight rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
               <Brain className="w-6 h-6 text-white" aria-hidden="true" />
             </div>
-            <span className="text-2xl font-bold text-iabyia-highlight">IAbyIA</span>
+            <span className="text-2xl font-bold gradient-text">IAbyIA</span>
           </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+              className="text-white hover:text-accent transition-colors focus-visible:focus"
             >
               Inicio
             </button>
             <button
               onClick={() => scrollToSection("acerca")}
-              className="text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+              className="text-white hover:text-accent transition-colors focus-visible:focus"
             >
               Acerca de mí
             </button>
@@ -77,13 +77,13 @@ export default function Navigation() {
                   ? scrollToSection("servicios")
                   : scrollToSection("servicios-especializados")
               }
-              className="text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+              className="text-white hover:text-accent transition-colors focus-visible:focus"
             >
               Servicios
             </button>
             <button
               onClick={() => scrollToSection("proceso")}
-              className="text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+              className="text-white hover:text-accent transition-colors focus-visible:focus"
             >
               Proceso
             </button>
@@ -113,25 +113,25 @@ export default function Navigation() {
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => scrollToSection("inicio")}
-                className="text-left text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+                className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
               >
                 Inicio
               </button>
               <button
                 onClick={() => scrollToSection("acerca")}
-                className="text-left text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+                className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
               >
                 Acerca de mí
               </button>
               <button
                 onClick={() => scrollToSection("servicios")}
-                className="text-left text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+                className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
               >
                 Servicios
               </button>
               <button
                 onClick={() => scrollToSection("proceso")}
-                className="text-left text-iabyia-highlight hover:text-accent transition-colors focus-visible:focus"
+                className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
               >
                 Proceso
               </button>
