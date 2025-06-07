@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react
+import { useState, useEffect, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useInView } from "@/hooks/use-in-view";
 import { 
