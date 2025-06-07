@@ -153,6 +153,15 @@ export default function Hero() {
                 aria-hidden="true"
                 style={{ animationDelay: "0.5s" }}
               />
+            <Sparkles
+                className="absolute -top-3 right-4 w-6 h-6 text-accent animate-pulse"
+                aria-hidden="true"
+              />
+              <Sparkles
+                className="absolute -top-3 left-4 w-4 h-4 text-blue-400 animate-pulse"
+                aria-hidden="true"
+                style={{ animationDelay: "0.5s" }}
+              />
           </div>
         </div>
       </div>
