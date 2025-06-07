@@ -5,7 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Contact() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const [formVisible, setFormVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -13,22 +14,41 @@ export default function Contact() {
     company: "",
     message: ""
   });
-  const sectionRef = useRef<HTMLElement>(null);
+  const ctaRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setCtaVisible(true);
           observer.unobserve(entry.target);
         }
       },
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFormVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (formRef.current) {
+      observer.observe(formRef.current);
     }
 
     return () => observer.disconnect();
@@ -68,7 +88,12 @@ export default function Contact() {
   return (
     <>
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent to-blue-900">
+      <section
+        ref={ctaRef}
+        className={`py-20 bg-gradient-to-r from-accent to-blue-900 transition-all duration-700 ${
+          ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
             ¿Listo para Transformar tu Negocio?
@@ -91,27 +116,31 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <div className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}>
-          <div className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Conecta con <span className="gradient-text">Nuestro Equipo</span>
-            </h2>
-            <p className="text-xl text-iabyia-light max-w-3xl mx-auto">
-              Cuéntanos sobre tu proyecto y descubre cómo podemos ayudarte a implementar IA en tu negocio
-            </p>
-          </div>
-          
-          <div className="max-w-2xl mx-auto">
-            <form
-              onSubmit={handleSubmit}
-              className={`space-y-6 transition-all duration-700 delay-300 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
+      <section
+        id="contacto"
+        ref={formRef}
+        className={`py-20 text-center transition-all duration-700 ${
+          formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className={`text-center mb-16 transition-all duration-700 ${
+          formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            Conecta con <span className="gradient-text">Nuestro Equipo</span>
+          </h2>
+          <p className="text-xl text-iabyia-light max-w-3xl mx-auto">
+            Cuéntanos sobre tu proyecto y descubre cómo podemos ayudarte a implementar IA en tu negocio
+          </p>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <form
+            onSubmit={handleSubmit}
+            className={`space-y-6 transition-all duration-700 delay-300 ${
+              formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
               <div className="grid md:grid-cols-2 gap-6">
                 <label className="flex flex-col">
                   <span className="sr-only">Nombre</span>
@@ -170,7 +199,7 @@ export default function Contact() {
               </Button>
             </form>
           </div>
-        </div>
+        </section>
       </>
   );
 }
