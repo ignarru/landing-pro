@@ -51,7 +51,7 @@ export default function About() {
                   <Rocket className="w-5 h-5 text-white" />
                 </div>
                 <p className="text-iabyia-light leading-relaxed">
-                  Mi misión es democratizar el acceso a tecnologías de IA mediante soluciones personalizadas.
+                  Impulso la transformación de negocios llevando la inteligencia artificial a todos, con soluciones a medida que convierten la tecnología en una ventaja competitiva accesible.
                 </p>
               </div>
               <div className="flex items-start">
