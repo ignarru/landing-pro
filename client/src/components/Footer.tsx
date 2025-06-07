@@ -1,12 +1,6 @@
 import { Brain, Linkedin, Twitter, Facebook, Phone, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <footer className="bg-secondary py-16">
@@ -64,36 +58,24 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6">Servicios</h3>
             <ul className="space-y-3 text-iabyia-light">
               <li>
-                <button 
-                  onClick={() => scrollToSection("servicios")}
-                  className="hover:text-accent transition-colors focus-visible:focus"
-                >
+                <span className="hover:text-accent transition-colors">
                   Automatización IA
-                </button>
+                </span>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection("servicios")}
-                  className="hover:text-accent transition-colors focus-visible:focus"
-                >
+                <span className="hover:text-accent transition-colors">
                   Análisis Predictivo
-                </button>
+                </span>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection("servicios")}
-                  className="hover:text-accent transition-colors focus-visible:focus"
-                >
+                <span className="hover:text-accent transition-colors">
                   Chatbots Avanzados
-                </button>
+                </span>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection("servicios")}
-                  className="hover:text-accent transition-colors focus-visible:focus"
-                >
+                <span className="hover:text-accent transition-colors">
                   Big Data
-                </button>
+                </span>
               </li>
             </ul>
           </div>
