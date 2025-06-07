@@ -27,6 +27,14 @@ Run the development server with:
 ```bash
 npm run start
 ```
+This command runs `tsx server/index.ts` under the hood.
+
+## Build & Deploy
+
+Run `npm run build` to generate the static site under `dist/public/`.
+
+When deploying, ensure required environment variables—such as `SUPABASE_URL` and
+`SUPABASE_SERVICE_ROLE_KEY`—are provided.
 
 ## About section
 
