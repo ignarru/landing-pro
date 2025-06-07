@@ -27,6 +27,8 @@ export default function About() {
           <img
             src="/profile.png"
             alt="Foto de Ignacio Arruvito"
+            loading="lazy"
+            decoding="async"
             className="w-full rounded-2xl shadow-lg"
           />
           <div>
