@@ -69,9 +69,9 @@ export default function Navigation() {
               Proceso
             </button>
             <Button
-              onClick={() => scrollToSection("contacto")}
+              onClick={() => scrollToSection("transformar")}
               type="button"
-              aria-label="Ir a la sección de contacto"
+              aria-label="Ir a la sección de consulta"
               className="iabyia-accent hover:opacity-90 text-white font-medium px-6 py-2 rounded-full"
             >
               Consulta Gratis
@@ -117,9 +117,9 @@ export default function Navigation() {
                 Proceso
               </button>
               <Button
-                onClick={() => scrollToSection("contacto")}
+                onClick={() => scrollToSection("transformar")}
                 type="button"
-                aria-label="Ir a la sección de contacto"
+                aria-label="Ir a la sección de consulta"
                 className="iabyia-accent hover:opacity-90 text-white font-medium w-full"
               >
                 Consulta Gratis
