@@ -5,5 +5,5 @@
 [build.environment]
   NODE_VERSION = "20"
   NODE_ENV = "production"
-  NPM_FLAGS = "--omit=dev"
-
+  # Do not omit dev dependencies during install so build plugins are available
+  NPM_FLAGS = ""
