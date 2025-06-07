@@ -24,7 +24,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="acerca" ref={sectionRef} className="py-20">
+    <section id="acerca" ref={sectionRef} className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}> 
           <img
@@ -34,7 +34,7 @@ export default function About() {
             decoding="async"
             className="w-full rounded-2xl shadow-lg"
           />
-          <div>
+          <div className="text-center md:text-left">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Acerca de <span className="gradient-text">Mí</span>
             </h2>
