@@ -44,11 +44,17 @@ export default function Navigation() {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => scrollToSection("inicio")}
               className="text-foreground hover:text-accent transition-colors focus-visible:focus"
             >
               Inicio
+            </button>
+            <button
+              onClick={() => scrollToSection("acerca")}
+              className="text-foreground hover:text-accent transition-colors focus-visible:focus"
+            >
+              Acerca de mí
             </button>
             <button 
               onClick={() => scrollToSection("servicios")}
@@ -56,17 +62,11 @@ export default function Navigation() {
             >
               Servicios
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection("proceso")}
               className="text-foreground hover:text-accent transition-colors focus-visible:focus"
             >
               Proceso
-            </button>
-            <button 
-              onClick={() => scrollToSection("contacto")}
-              className="text-foreground hover:text-accent transition-colors focus-visible:focus"
-            >
-              Contacto
             </button>
             <Button
               onClick={() => scrollToSection("contacto")}
@@ -92,11 +92,17 @@ export default function Navigation() {
         {isMobileMenuOpen && (
           <div className="md:hidden mobile-menu-enter iabyia-secondary rounded-lg mx-4 mb-4 p-4">
             <div className="flex flex-col space-y-4">
-              <button 
+              <button
                 onClick={() => scrollToSection("inicio")}
                 className="text-left text-foreground hover:text-accent transition-colors focus-visible:focus"
               >
                 Inicio
+              </button>
+              <button
+                onClick={() => scrollToSection("acerca")}
+                className="text-left text-foreground hover:text-accent transition-colors focus-visible:focus"
+              >
+                Acerca de mí
               </button>
               <button 
                 onClick={() => scrollToSection("servicios")}
@@ -104,17 +110,11 @@ export default function Navigation() {
               >
                 Servicios
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection("proceso")}
                 className="text-left text-foreground hover:text-accent transition-colors focus-visible:focus"
               >
                 Proceso
-              </button>
-              <button 
-                onClick={() => scrollToSection("contacto")}
-                className="text-left text-foreground hover:text-accent transition-colors focus-visible:focus"
-              >
-                Contacto
               </button>
               <Button
                 onClick={() => scrollToSection("contacto")}
