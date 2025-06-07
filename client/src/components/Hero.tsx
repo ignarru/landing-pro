@@ -137,14 +137,14 @@ export default function Hero() {
             ))}
             
               <Sparkles
-              className="absolute top-1/2 -right-3 w-6 h-6 text-accent animate-pulse -translate-y-1/2"
-              aria-hidden="true"
-            />
-            <Sparkles
-              className="absolute top-1/2 -left-3 w-4 h-4 text-blue-400 animate-pulse -translate-y-1/2"
-              aria-hidden="true"
-              style={{ animationDelay: "0.5s" }}
-            />
+                className="absolute -bottom-3 right-4 w-6 h-6 text-accent animate-pulse"
+                aria-hidden="true"
+              />
+              <Sparkles
+                className="absolute -bottom-3 left-4 w-4 h-4 text-blue-400 animate-pulse"
+                aria-hidden="true"
+                style={{ animationDelay: "0.5s" }}
+              />
           </div>
         </div>
       </div>
