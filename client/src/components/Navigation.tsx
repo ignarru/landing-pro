@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Brain, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +19,21 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const navHeight = navRef.current?.offsetHeight ?? 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset - navHeight;
+      window.scrollTo({ top: elementPosition, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? "glass-effect" : "bg-transparent"
-    }`}>
+    <nav
+      ref={navRef}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "glass-effect" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
