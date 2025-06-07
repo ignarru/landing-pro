@@ -88,7 +88,11 @@ export default function Hero() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
           <div className={`relative animate-float ${brainActive ? "animate-bounce" : ""}`}>
-            <InteractiveBrain className="mx-auto" />
+            <InteractiveBrain
+              className="mx-auto"
+              active={brainActive}
+              onInteraction={handleStartClick}
+            />
 
             <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping" />
             <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }} />
