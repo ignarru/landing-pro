@@ -73,11 +73,13 @@ export default function Contact() {
           <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
             Agenda una consulta gratuita y descubre cómo la IA puede revolucionar tu empresa
           </p>
-          <Button 
+          <Button
             onClick={() => {
               const element = document.getElementById("contacto");
               if (element) element.scrollIntoView({ behavior: "smooth" });
             }}
+            type="button"
+            aria-label="Ir al formulario de contacto"
             className="bg-white text-accent hover:bg-gray-100 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
           >
             Agendar Consulta Gratuita
