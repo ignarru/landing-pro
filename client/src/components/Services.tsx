@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useInView } from "@/hooks/use-in-view";
 import { 
   Bot, 
   TrendingUp, 
@@ -67,6 +69,52 @@ const specializedServices: Service[] = [
   }
 ];
 
+function ServiceCard({ service, visible }: { service: Service; visible: boolean }) {
+  const isMobile = useIsMobile();
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const show = isMobile ? isInView : visible;
+  return (
+    <div
+      ref={ref}
+      className={`glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300 ${
+        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+      style={{ transitionDelay: `${service.delay}ms` }}
+    >
+      <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center mb-6`}>
+        {service.icon}
+      </div>
+      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+      <p className="text-iabyia-light leading-relaxed">{service.description}</p>
+    </div>
+  );
+}
+
+function SpecializedServiceCard({ service, visible }: { service: Service; visible: boolean }) {
+  const isMobile = useIsMobile();
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const show = isMobile ? isInView : visible;
+  return (
+    <div
+      ref={ref}
+      className={`glass-effect rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 ${
+        show ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+      }`}
+      style={{ transitionDelay: `${service.delay}ms` }}
+    >
+      <div className="flex items-start space-x-4">
+        <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+          {service.icon}
+        </div>
+        <div>
+          <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+          <p className="text-iabyia-light">{service.description}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
   const [isMainVisible, setIsMainVisible] = useState(false);
   const [isSpecializedVisible, setIsSpecializedVisible] = useState(false);
@@ -115,21 +163,7 @@ export default function Services() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mainServices.map((service, index) => (
-              <div 
-                key={index}
-                className={`glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300 ${
-                  isMainVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
-                style={{ transitionDelay: `${service.delay}ms` }}
-              >
-                <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center mb-6`}>
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-iabyia-light leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
+              <ServiceCard key={index} service={service} visible={isMainVisible} />
             ))}
           </div>
         </div>
@@ -152,23 +186,7 @@ export default function Services() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               {specializedServices.map((service, index) => (
-                <div 
-                  key={index}
-                  className={`glass-effect rounded-2xl p-6 transform hover:scale-105 transition-all duration-300 ${
-                    isSpecializedVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                  }`}
-                  style={{ transitionDelay: `${service.delay}ms` }}
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      {service.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                      <p className="text-iabyia-light">{service.description}</p>
-                    </div>
-                  </div>
-                </div>
+                <SpecializedServiceCard key={index} service={service} visible={isSpecializedVisible} />
               ))}
             </div>
             
