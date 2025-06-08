@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sparkles, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import InteractiveBrain from "./InteractiveBrain";
 import { Button } from "@/components/ui/button";
 import { HERO_DELAY_MS } from "@/lib/constants";
@@ -91,7 +92,8 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center pt-28 md:pt-20 scroll-mt-28 md:scroll-mt-20 pb-24 px-4"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <div
+        <motion.div
+          layout
           className={`transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           } ${realignText ? 'animate-realign' : ''}`}
@@ -106,20 +108,30 @@ export default function Hero() {
             Automatización inteligente, análisis predictivo y optimización de procesos 
             para llevar tu empresa al siguiente nivel
           </p>
-          {!buttonHidden && (
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button
-              onClick={handleStartClick}
-              aria-label="Ir a la sección sobre mí"
-              type="button"
-              disabled={started}
-              className={`iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all ${started ? 'pointer-events-none cursor-not-allowed animate-fade-out' : ''}`}
-            >
-              Comenzar Ahora
-            </Button>
-          </div>
-          )}
-        </div>
+          <AnimatePresence>
+            {!buttonHidden && (
+              <motion.div
+                key="start-button"
+                layout
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              >
+                <Button
+                  onClick={handleStartClick}
+                  aria-label="Ir a la sección sobre mí"
+                  type="button"
+                  disabled={started}
+                  className={`iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all ${started ? 'pointer-events-none cursor-not-allowed animate-fade-out' : ''}`}
+                >
+                  Comenzar Ahora
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
         
         {/* Floating AI Brain Illustration */}
         {!brainHidden && (
@@ -204,18 +216,28 @@ export default function Hero() {
           </div>
         </div>
         )}
-        {showQuestion && (
-          <div className="mt-14 flex flex-col items-center animate-slide-up">
-            <p className="text-3xl sm:text-4xl text-iabyia-light font-semibold mb-2">
-              ¿Quieres conocer más?
-            </p>
-            {showArrow && (
-              <ChevronDown
-                className="w-8 h-8 text-iabyia-light animate-bounce"
-              />
-            )}
-          </div>
-        )}
+        <AnimatePresence>
+          {showQuestion && (
+            <motion.div
+              key="question"
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.6 }}
+              className="mt-14 flex flex-col items-center"
+            >
+              <p className="text-3xl sm:text-4xl text-iabyia-light font-semibold mb-2">
+                ¿Quieres conocer más?
+              </p>
+              {showArrow && (
+                <ChevronDown
+                  className="w-8 h-8 text-iabyia-light animate-bounce"
+                />
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
