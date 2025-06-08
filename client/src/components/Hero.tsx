@@ -74,7 +74,7 @@ export default function Hero() {
         setButtonHidden(true);
         setRealignText(true);
       }, 800);
-    }, 3000);
+    }, 2000);
   };
 
   return (
