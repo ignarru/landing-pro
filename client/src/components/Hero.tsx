@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Sparkles } from "lucide-react";
 import InteractiveBrain from "./InteractiveBrain";
 import { Button } from "@/components/ui/button";
-
-const HERO_DELAY_MS = 600;
+import { HERO_DELAY_MS } from "@/lib/constants";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
