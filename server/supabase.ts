@@ -6,6 +6,10 @@ interface DummyClient {
 
 let supabase: SupabaseClient | DummyClient;
 
+export const supabaseConfigured = Boolean(
+  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
 const supabaseUrl = process.env.SUPABASE_URL as string;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY as string;
 
