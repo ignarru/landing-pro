@@ -203,7 +203,7 @@
   }
 
   .animate-realign {
-    animation: text-realign 1s ease-out forwards;
+    animation: text-realign 0.8s ease-in-out forwards;
   }
 }
 
@@ -288,11 +288,14 @@
 }
 
 @keyframes text-realign {
-  from {
-    transform: translateY(0);
+  0% {
+    transform: translateY(0) scale(1);
   }
-  to {
-    transform: translateY(-50px);
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+  100% {
+    transform: translateY(-40px) scale(1);
   }
 }
 
