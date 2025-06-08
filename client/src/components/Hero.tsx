@@ -15,6 +15,8 @@ export default function Hero() {
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
+  const [buttonHidden, setButtonHidden] = useState(false);
+  const [realignText, setRealignText] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -59,8 +61,12 @@ export default function Hero() {
       setSparkles([]);
       setBrainActive(false);
       setBrainExit(true);
-      setTimeout(() => setBrainHidden(true), 800);
-    }, 1000);
+      setTimeout(() => {
+        setBrainHidden(true);
+        setButtonHidden(true);
+        setRealignText(true);
+      }, 800);
+    }, 3000);
   };
 
   return (
@@ -69,9 +75,11 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center pt-28 md:pt-20 scroll-mt-28 md:scroll-mt-20 pb-24 px-4"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <div className={`transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}>
+        <div
+          className={`transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          } ${realignText ? 'animate-realign' : ''}`}
+        >
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Transforma tu negocio con{" "}
             <span className="gradient-text">
@@ -82,6 +90,7 @@ export default function Hero() {
             Automatización inteligente, análisis predictivo y optimización de procesos 
             para llevar tu empresa al siguiente nivel
           </p>
+          {!buttonHidden && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button
               onClick={handleStartClick}
@@ -93,6 +102,7 @@ export default function Hero() {
               Comenzar Ahora
             </Button>
 
+            )}
           </div>
         </div>
         
