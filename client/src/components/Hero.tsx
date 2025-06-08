@@ -12,6 +12,7 @@ export default function Hero() {
   const [started, setStarted] = useState(false);
   const [brainExit, setBrainExit] = useState(false);
   const [brainHidden, setBrainHidden] = useState(false);
+  const [showQuestion, setShowQuestion] = useState(false);
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
@@ -63,6 +64,13 @@ export default function Hero() {
       setBrainExit(true);
       setTimeout(() => {
         setBrainHidden(true);
+        useEffect(() => {
+    if (brainHidden) {
+      const timer = setTimeout(() => setShowQuestion(true), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [brainHidden]);
+        
         setButtonHidden(true);
         setRealignText(true);
       }, 800);
@@ -187,7 +195,12 @@ export default function Hero() {
               />
           </div>
         </div>
-      )}
+        )}
+        {showQuestion && (
+          <p className="mt-10 text-3xl sm:text-4xl text-iabyia-light font-semibold animate-slide-up">
+            ¿Te gustaría descubrir cómo?
+          </p>
+        )}
       </div>
     </section>
   );
