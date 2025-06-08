@@ -16,6 +16,7 @@ Then edit `.env` and set:
 ```bash
 SUPABASE_URL=<your-supabase-url>
 SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
+# or use SUPABASE_SERVICE_KEY / SUPABASE_SECRET_KEY / SUPABASE_ANON_KEY
 ```
 
 The client sends contact requests to `/api/contact` and the server inserts them into Supabase using these credentials. If the environment variables are missing, the API responds with `503 Service unavailable` and submissions are logged locally instead of stored.
