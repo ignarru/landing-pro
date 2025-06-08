@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { supabase } from "./supabase";
+import { supabase, supabaseConfigured } from "./supabase";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 
 // basic in-memory throttle map keyed by IP address
@@ -20,6 +20,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid data" });
       }
 
+      if (!supabaseConfigured) {
+        return res.status(503).json({ message: "Service unavailable" });
+      }
+      
       const contact: InsertContact = parsed.data;
       const { error } = await supabase.from("contacts").insert(contact);
       if (error) {
