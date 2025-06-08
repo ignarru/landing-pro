@@ -6,17 +6,24 @@ interface DummyClient {
 }
 
 let supabase: SupabaseClient | DummyClient;
+let supabaseConfigured = false;
 
-export const supabaseConfigured = Boolean(
-  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY,
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const supabaseUrl = process.env.SUPABASE_URL as string;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY as string;
+function isValidUrl(url: string | undefined): url is string {
+  if (!url) return false;
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
-if (!supabaseUrl || !serviceKey) {
+if (!isValidUrl(supabaseUrl) || !serviceKey) {
   console.warn(
-    "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are not set; form submissions will be logged only."
+    "Supabase credentials are missing or invalid; form submissions will be logged only."
   );
   supabase = {
     from() {
@@ -30,6 +37,7 @@ if (!supabaseUrl || !serviceKey) {
   };
 } else {
   supabase = createClient(supabaseUrl, serviceKey);
+  supabaseConfigured = true;
 }
 
-export { supabase };
+export { supabase, supabaseConfigured };
