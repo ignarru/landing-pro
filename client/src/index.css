@@ -201,6 +201,10 @@
   .brain-slide-down {
     animation: brain-slide-down 2s forwards;
   }
+
+  .animate-realign {
+    animation: text-realign 1s ease-out forwards;
+  }
 }
 
 @keyframes float {
@@ -280,6 +284,15 @@
   to {
     transform: translateY(120vh);
     opacity: 0;
+  }
+}
+
+@keyframes text-realign {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50px);
   }
 }
 
