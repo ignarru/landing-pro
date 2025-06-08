@@ -235,8 +235,9 @@ export default function Hero() {
                   className="w-8 h-8 text-iabyia-light animate-bounce"
                 />
               )}
-            </div>
+            </motion.div>
           )}
+        </AnimatePresence>
       </div>
     </section>
   );
