@@ -126,9 +126,19 @@ export default function Navigation() {
           {isMobileMenuOpen && (
             <motion.div
               key="mobile-menu"
-              initial={{ opacity: 0, scale: 0.8, x: 20, originX: 1, originY: 0 }}
-              animate={{ opacity: 1, scale: 1, x: 0, transition: { duration: 0.2 } }}
-              exit={{ opacity: 0, scale: 0.8, x: 20, transition: { duration: 0.15 } }}
+              initial={{ opacity: 0, scale: 0, y: -10, originX: 1, originY: 0 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                transition: { type: "spring", stiffness: 400, damping: 30 }
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0,
+                y: -10,
+                transition: { duration: 0.2 }
+              }}
               className="md:hidden iabyia-secondary rounded-lg mx-4 mb-4 p-4 origin-top-right"
             >
               <div className="flex flex-col space-y-4">
