@@ -88,7 +88,7 @@ export default function Hero() {
               aria-label="Ir a la sección sobre mí"
               type="button"
               disabled={started}
-              className={`iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all ${started ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all ${started ? 'pointer-events-none cursor-not-allowed animate-fade-out' : ''}`}
             >
               Comenzar Ahora
             </Button>
