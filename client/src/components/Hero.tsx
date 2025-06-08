@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ChevronDown } from "lucide-react";
 import InteractiveBrain from "./InteractiveBrain";
 import { Button } from "@/components/ui/button";
 import { HERO_DELAY_MS } from "@/lib/constants";
@@ -36,6 +36,13 @@ export default function Hero() {
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
 
+  useEffect(() => {
+    if (brainHidden) {
+      const timer = setTimeout(() => setShowQuestion(true), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [brainHidden]);
+  
   const triggerBurst = () => {
     setBurstActive(true);
     setTimeout(() => setBurstActive(false), 1000);
@@ -64,13 +71,6 @@ export default function Hero() {
       setBrainExit(true);
       setTimeout(() => {
         setBrainHidden(true);
-        useEffect(() => {
-    if (brainHidden) {
-      const timer = setTimeout(() => setShowQuestion(true), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [brainHidden]);
-        
         setButtonHidden(true);
         setRealignText(true);
       }, 800);
@@ -197,9 +197,12 @@ export default function Hero() {
         </div>
         )}
         {showQuestion && (
-          <p className="mt-10 text-3xl sm:text-4xl text-iabyia-light font-semibold animate-slide-up">
-            ¿Te gustaría descubrir cómo?
-          </p>
+          <div className="mt-10 flex flex-col items-center animate-slide-up">
+            <p className="text-3xl sm:text-4xl text-iabyia-light font-semibold mb-2">
+              ¿Quieres conocer más?
+            </p>
+            <ChevronDown className="w-8 h-8 text-iabyia-light animate-bounce" />
+          </div>
         )}
       </div>
     </section>
