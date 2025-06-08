@@ -66,16 +66,23 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const errorJson = await res.json().catch(() => null);
+        const message = errorJson?.message ?? "Request failed";
+        throw new Error(message);
+      }
+      
       toast({
         title: "¡Mensaje enviado!",
         description: "Nos pondremos en contacto contigo pronto.",
       });
       setFormData({ name: "", email: "", company: "", message: "" });
-       } catch (err) {
+      } catch (err: unknown) {
       console.error(err);
-      toast({ title: "Error", description: "No se pudo enviar el mensaje" });
+      const message = err instanceof Error ? err.message : "No se pudo enviar el mensaje";
+      toast({ title: "Error", description: message });
     }
+   
     setIsSubmitting(false);
   };
 
