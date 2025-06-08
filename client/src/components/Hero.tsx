@@ -134,7 +134,7 @@ export default function Hero() {
         </motion.div>
         
         {/* Floating AI Brain Illustration */}
-        {!brainHidden && (Add commentMore actions
+        {!brainHidden && (
           <divAdd commentMore actions
             className={`transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
