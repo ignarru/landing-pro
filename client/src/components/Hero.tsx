@@ -13,6 +13,7 @@ export default function Hero() {
   const [brainExit, setBrainExit] = useState(false);
   const [brainHidden, setBrainHidden] = useState(false);
   const [showQuestion, setShowQuestion] = useState(false);
+  const [showArrow, setShowArrow] = useState(false);
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
@@ -38,10 +39,17 @@ export default function Hero() {
 
   useEffect(() => {
     if (brainHidden) {
-      const timer = setTimeout(() => setShowQuestion(true), 300);
+      const timer = setTimeout(() => setShowQuestion(true), 500);
       return () => clearTimeout(timer);
     }
   }, [brainHidden]);
+
+  useEffect(() => {
+    if (showQuestion) {
+      const timer = setTimeout(() => setShowArrow(true), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [showQuestion]);
   
   const triggerBurst = () => {
     setBurstActive(true);
@@ -74,7 +82,7 @@ export default function Hero() {
         setButtonHidden(true);
         setRealignText(true);
       }, 800);
-    }, 2000);
+    }, 1700);
   };
 
   return (
@@ -197,11 +205,15 @@ export default function Hero() {
         </div>
         )}
         {showQuestion && (
-          <div className="mt-10 flex flex-col items-center animate-slide-up">
+          <div className="mt-14 flex flex-col items-center animate-slide-up">
             <p className="text-3xl sm:text-4xl text-iabyia-light font-semibold mb-2">
               ¿Quieres conocer más?
             </p>
-            <ChevronDown className="w-8 h-8 text-iabyia-light animate-bounce" />
+            {showArrow && (
+              <ChevronDown
+                className="w-8 h-8 text-iabyia-light animate-bounce"
+              />
+            )}
           </div>
         )}
       </div>
