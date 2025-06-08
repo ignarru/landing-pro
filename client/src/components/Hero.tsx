@@ -101,9 +101,8 @@ export default function Hero() {
             >
               Comenzar Ahora
             </Button>
-
-            )}
           </div>
+          )}
         </div>
         
         {/* Floating AI Brain Illustration */}
