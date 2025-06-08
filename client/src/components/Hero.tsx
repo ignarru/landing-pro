@@ -135,7 +135,7 @@ export default function Hero() {
         
         {/* Floating AI Brain Illustration */}
         {!brainHidden && (
-          <divAdd commentMore actions
+          <div
             className={`transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
@@ -214,9 +214,8 @@ export default function Hero() {
                 style={{ '--star-x': '12px', '--star-y': '-12px' } as React.CSSProperties}
               />
           </div>
-        </motion.div>
+        </div>
         )}
-        </AnimatePresence>
         <AnimatePresence>
           {showQuestion && (
             <motion.div
