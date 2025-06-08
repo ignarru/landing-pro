@@ -193,6 +193,10 @@
     animation: brain-spin 1s ease-in-out;
     transform-style: preserve-3d;
   }
+
+  .brain-slide-down {
+    animation: brain-slide-down 0.8s forwards;
+  }
 }
 
 @keyframes float {
@@ -252,6 +256,17 @@
   }
   to {
     transform: perspective(600px) rotateY(360deg);
+  }
+}
+
+@keyframes brain-slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(120vh);
+    opacity: 0;
   }
 }
 
