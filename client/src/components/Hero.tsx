@@ -11,13 +11,15 @@ export default function Hero() {
   const [burstActive, setBurstActive] = useState(false);
   const [starsExpanded, setStarsExpanded] = useState(false);
   const [started, setStarted] = useState(false);
-  const [brainVisible, setBrainVisible] = useState(true);
+  const [brainExit, setBrainExit] = useState(false);
+  const [brainHidden, setBrainHidden] = useState(false);
   const [showQuestion, setShowQuestion] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
   const [buttonHidden, setButtonHidden] = useState(false);
+  const [realignText, setRealignText] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), HERO_DELAY_MS);
@@ -37,11 +39,11 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!brainVisible) {
+    if (brainHidden) {
       const timer = setTimeout(() => setShowQuestion(true), 500);
       return () => clearTimeout(timer);
     }
-  }, [brainVisible]);
+  }, [brainHidden]);
 
   useEffect(() => {
     if (showQuestion) {
@@ -75,8 +77,12 @@ export default function Hero() {
     setTimeout(() => {
       setSparkles([]);
       setBrainActive(false);
-      setButtonHidden(true);
-      setBrainVisible(false);
+      setBrainExit(true);
+      setTimeout(() => {
+        setBrainHidden(true);
+        setButtonHidden(true);
+        setRealignText(true);
+      }, 800);
     }, 1700);
   };
 
@@ -90,7 +96,7 @@ export default function Hero() {
           layout
           className={`transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          } ${realignText ? 'animate-realign' : ''}`}
         >
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Transforma tu negocio con{" "}
@@ -128,24 +134,17 @@ export default function Hero() {
         </motion.div>
         
         {/* Floating AI Brain Illustration */}
-        <AnimatePresence>
-          {brainVisible && (
-            <motion.div
-              key="brain"
-              layout
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: "120vh" }}
-              transition={{ duration: 1 }}
-              className={`transition-all duration-1000 delay-300 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+        {!brainHidden && (Add commentMore actions
+          <divAdd commentMore actions
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div
+              className={`relative w-fit mx-auto animate-float ${
+                brainActive ? "animate-bounce" : ""
+              } ${brainExit ? "brain-slide-down" : ""}`}
             >
-              <div
-                className={`relative w-fit mx-auto animate-float ${
-                  brainActive ? "animate-bounce" : ""
-                }`}
-              >
             <InteractiveBrain
               className="mx-auto"
               active={brainActive}
@@ -237,9 +236,8 @@ export default function Hero() {
                   className="w-8 h-8 text-iabyia-light animate-bounce"
                 />
               )}
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </div>
     </section>
   );
