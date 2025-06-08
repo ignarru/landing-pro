@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { Brain, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { HERO_DELAY_MS } from "@/lib/constants";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(false);
   const isMobile = useIsMobile();
   const navRef = useRef<HTMLElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,21 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setIsNavVisible(true), HERO_DELAY_MS);
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        setIsNavVisible(false);
+        setTimeout(() => setIsNavVisible(true), HERO_DELAY_MS);
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, []);
+  
   const scrollToSection = (sectionId: string, offset = 0) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -38,9 +55,9 @@ export default function Navigation() {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-1000 ${
         isScrolled ? "glass-effect" : "bg-transparent"
-      }`}
+      } ${isNavVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={barRef} className="flex justify-between items-center py-4">
