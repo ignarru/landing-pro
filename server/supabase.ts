@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 interface DummyClient {
@@ -5,6 +6,10 @@ interface DummyClient {
 }
 
 let supabase: SupabaseClient | DummyClient;
+
+export const supabaseConfigured = Boolean(
+  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+);
 
 export const supabaseConfigured = Boolean(
   process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
