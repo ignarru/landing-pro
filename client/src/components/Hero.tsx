@@ -9,6 +9,9 @@ export default function Hero() {
   const [brainActive, setBrainActive] = useState(false);
   const [burstActive, setBurstActive] = useState(false);
   const [starsExpanded, setStarsExpanded] = useState(false);
+  const [started, setStarted] = useState(false);
+  const [brainExit, setBrainExit] = useState(false);
+  const [brainHidden, setBrainHidden] = useState(false);
   const [sparkles, setSparkles] = useState<
     { id: number; x: string; y: string; rot: string }[]
   >([]);
@@ -45,6 +48,8 @@ export default function Hero() {
   };
   
   const handleStartClick = () => {
+    if (started) return;
+    setStarted(true);
     setStarsExpanded(true);
     setTimeout(() => setStarsExpanded(false), 800);
     setBrainActive(true);
@@ -53,6 +58,8 @@ export default function Hero() {
     setTimeout(() => {
       setSparkles([]);
       setBrainActive(false);
+      setBrainExit(true);
+      setTimeout(() => setBrainHidden(true), 800);
     }, 1000);
   };
 
@@ -80,7 +87,8 @@ export default function Hero() {
               onClick={handleStartClick}
               aria-label="Ir a la sección sobre mí"
               type="button"
-              className="iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all"
+              disabled={started}
+              className={`iabyia-accent hover:opacity-90 text-white px-8 py-4 text-lg font-medium transform hover:scale-105 transition-all ${started ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               Comenzar Ahora
             </Button>
@@ -89,18 +97,22 @@ export default function Hero() {
         </div>
         
         {/* Floating AI Brain Illustration */}
-        <div className={`transition-all duration-1000 delay-300 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}>
+        {!brainHidden && (
           <div
-            className={`relative w-fit mx-auto animate-float ${
-              brainActive ? "animate-bounce" : ""
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
+            <div
+              className={`relative w-fit mx-auto animate-float ${
+                brainActive ? "animate-bounce" : ""
+              } ${brainExit ? "brain-slide-down" : ""}`}
+            >
             <InteractiveBrain
               className="mx-auto"
               active={brainActive}
               onInteraction={handleStartClick}
+              started={started}
             />
 
             <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping" />
@@ -166,6 +178,7 @@ export default function Hero() {
               />
           </div>
         </div>
+      )}
       </div>
     </section>
   );
