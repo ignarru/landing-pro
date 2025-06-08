@@ -105,7 +105,6 @@ export default function Hero() {
 
             <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-ping" />
             <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-800 rounded-full animate-ping" style={{ animationDelay: "1s" }} />
-            <div className="absolute top-8 right-8 w-1 h-1 bg-green-400 rounded-full animate-ping" style={{ animationDelay: "2s" }} />
 
             {burstActive && (
               <>
