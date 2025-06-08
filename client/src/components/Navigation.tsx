@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Brain, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -121,15 +122,22 @@ export default function Navigation() {
         </div>
         
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mobile-menu-enter iabyia-secondary rounded-lg mx-4 mb-4 p-4">
-            <div className="flex flex-col space-y-4">
-              <button
-                onClick={() => scrollToSection("inicio")}
-                className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
-              >
-                Inicio
-              </button>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, scale: 0.8, x: 20, originX: 1, originY: 0 }}
+              animate={{ opacity: 1, scale: 1, x: 0, transition: { duration: 0.2 } }}
+              exit={{ opacity: 0, scale: 0.8, x: 20, transition: { duration: 0.15 } }}
+              className="md:hidden iabyia-secondary rounded-lg mx-4 mb-4 p-4 origin-top-right"
+            >
+              <div className="flex flex-col space-y-4">
+                <button
+                  onClick={() => scrollToSection("inicio")}
+                  className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
+                >
+                  Inicio
+                </button>
               <button
                 onClick={() => scrollToSection("acerca")}
                 className="text-left text-white hover:text-accent transition-colors focus-visible:focus"
@@ -157,8 +165,9 @@ export default function Navigation() {
                 Consulta Gratis
               </Button>
             </div>
-          </div>
-        )}
+          </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
