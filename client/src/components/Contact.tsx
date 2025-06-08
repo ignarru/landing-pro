@@ -59,7 +59,8 @@ export default function Contact() {
     setIsSubmitting(true);
    
     try {
-      const res = await fetch("/api/contact", {
+      const apiUrl = new URL("/api/contact", window.location.origin).toString();
+      const res = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
