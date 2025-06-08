@@ -8,8 +8,13 @@ interface DummyClient {
 let supabase: SupabaseClient | DummyClient;
 let supabaseConfigured = false;
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL?.trim();
+const serviceKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ||
+  process.env.SUPABASE_SERVICE_KEY?.trim() ||
+  process.env.SUPABASE_SECRET_KEY?.trim() ||
+  process.env.SUPABASE_ANON_KEY?.trim() ||
+  process.env.SUPABASE_KEY?.trim();
 
 function isValidUrl(url: string | undefined): url is string {
   if (!url) return false;
@@ -23,7 +28,7 @@ function isValidUrl(url: string | undefined): url is string {
 
 if (!isValidUrl(supabaseUrl) || !serviceKey) {
   console.warn(
-    "Supabase credentials are missing or invalid; form submissions will be logged only."
+    "Supabase credentials are missing or invalid; set SUPABASE_URL and a service key in your environment. Form submissions will be logged only."
   );
   supabase = {
     from() {
